@@ -44,8 +44,6 @@ html, body { background:var(--bg); font-family:'Inter',sans-serif; color:var(--t
 .field textarea { resize:vertical; min-height:80px; }
 .field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b4a3e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
 
-.field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-
 .check-group { display:flex; flex-direction:column; gap:8px; }
 .check-item { display:flex; align-items:center; gap:10px; cursor:pointer; }
 .check-item input[type=checkbox] { width:18px; height:18px; accent-color:var(--mocha); cursor:pointer; flex-shrink:0; }
@@ -62,6 +60,7 @@ html, body { background:var(--bg); font-family:'Inter',sans-serif; color:var(--t
 
 .btn-enviar { width:100%; padding:16px; border:none; border-radius:10px; background:var(--dark); color:#fff; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; letter-spacing:2px; cursor:pointer; transition:background 0.2s; }
 .btn-enviar:hover { background:var(--mocha); }
+.btn-enviar:disabled { background:#999; cursor:not-allowed; }
 
 .success { display:none; flex-direction:column; align-items:center; text-align:center; padding:48px 24px; gap:14px; }
 .success.visible { display:flex; }
@@ -84,20 +83,12 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
 
 <form class="form-wrap" id="form" onsubmit="enviar(event)">
 
-  <!-- BLOCO 1: NEGÓCIO -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">1</div>
-      <div class="bloco-title">Sobre o Negócio</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">1</div><div class="bloco-title">Sobre o Negócio</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">Nome da marca</label>
-        <input type="text" placeholder="Ex: Cora·Li Fit" required/>
-      </div>
-      <div class="field">
-        <label class="field-label">Há quanto tempo a marca existe?</label>
-        <select required>
+      <div class="field"><label class="field-label">Nome da marca</label><input type="text" name="nome_marca" placeholder="Ex: Cora·Li Fit" required/></div>
+      <div class="field"><label class="field-label">Há quanto tempo a marca existe?</label>
+        <select name="tempo_marca" required>
           <option value="">Selecione</option>
           <option>Menos de 6 meses</option>
           <option>6 meses a 1 ano</option>
@@ -105,9 +96,8 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
           <option>Mais de 2 anos</option>
         </select>
       </div>
-      <div class="field">
-        <label class="field-label">Qual o ticket médio dos seus produtos?</label>
-        <select>
+      <div class="field"><label class="field-label">Qual o ticket médio dos seus produtos?</label>
+        <select name="ticket_medio">
           <option value="">Selecione</option>
           <option>Até R$ 100</option>
           <option>R$ 100 a R$ 200</option>
@@ -118,20 +108,12 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
     </div>
   </div>
 
-  <!-- BLOCO 2: REDES SOCIAIS -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">2</div>
-      <div class="bloco-title">Redes Sociais</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">2</div><div class="bloco-title">Redes Sociais</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">@ do Instagram</label>
-        <input type="text" placeholder="@coralifitoficial"/>
-      </div>
-      <div class="field">
-        <label class="field-label">Quantos seguidores tem hoje?</label>
-        <select>
+      <div class="field"><label class="field-label">@ do Instagram</label><input type="text" name="instagram" placeholder="@coralifitoficial"/></div>
+      <div class="field"><label class="field-label">Quantos seguidores tem hoje?</label>
+        <select name="seguidores">
           <option value="">Selecione</option>
           <option>Menos de 500</option>
           <option>500 a 1.000</option>
@@ -140,122 +122,90 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
           <option>Mais de 10.000</option>
         </select>
       </div>
-      <div class="field">
-        <label class="field-label">Tem outras redes ativas?</label>
+      <div class="field"><label class="field-label">Tem outras redes ativas?</label>
         <div class="check-group">
-          <label class="check-item"><input type="checkbox"/><span>TikTok</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Facebook</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Pinterest</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Nenhuma outra</span></label>
+          <label class="check-item"><input type="checkbox" name="redes" value="TikTok"/><span>TikTok</span></label>
+          <label class="check-item"><input type="checkbox" name="redes" value="Facebook"/><span>Facebook</span></label>
+          <label class="check-item"><input type="checkbox" name="redes" value="Pinterest"/><span>Pinterest</span></label>
+          <label class="check-item"><input type="checkbox" name="redes" value="Nenhuma"/><span>Nenhuma outra</span></label>
         </div>
       </div>
-      <div class="field">
-        <label class="field-label">Já tem conta no Gerenciador de Anúncios (Meta)?</label>
+      <div class="field"><label class="field-label">Já tem conta no Gerenciador de Anúncios (Meta)?</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="meta" value="sim"/><span>Sim, já tenho</span></label>
-          <label class="radio-item"><input type="radio" name="meta" value="nao"/><span>Não tenho ainda</span></label>
-          <label class="radio-item"><input type="radio" name="meta" value="naosei"/><span>Não sei o que é isso</span></label>
+          <label class="radio-item"><input type="radio" name="meta" value="Sim, já tenho"/><span>Sim, já tenho</span></label>
+          <label class="radio-item"><input type="radio" name="meta" value="Não tenho ainda"/><span>Não tenho ainda</span></label>
+          <label class="radio-item"><input type="radio" name="meta" value="Não sei o que é isso"/><span>Não sei o que é isso</span></label>
         </div>
       </div>
-      <div class="field">
-        <label class="field-label">Já fez anúncios pagos antes?</label>
+      <div class="field"><label class="field-label">Já fez anúncios pagos antes?</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="anuncios" value="sim"/><span>Sim</span></label>
-          <label class="radio-item"><input type="radio" name="anuncios" value="nao"/><span>Não, será a primeira vez</span></label>
+          <label class="radio-item"><input type="radio" name="anuncios" value="Sim"/><span>Sim</span></label>
+          <label class="radio-item"><input type="radio" name="anuncios" value="Não, será a primeira vez"/><span>Não, será a primeira vez</span></label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BLOCO 3: PÚBLICO -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">3</div>
-      <div class="bloco-title">Público-Alvo</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">3</div><div class="bloco-title">Público-Alvo</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">Quem é sua cliente ideal?</label>
-        <div class="field-hint">Idade, estilo de vida, interesses, renda</div>
-        <textarea placeholder="Ex: Mulheres de 25 a 40 anos, que praticam academia, se preocupam com estética e qualidade, classe média/alta..."></textarea>
-      </div>
-      <div class="field">
-        <label class="field-label">Em qual cidade ou região você atende?</label>
-        <input type="text" placeholder="Ex: Todo o Brasil / Goiânia e região / Online"/>
-      </div>
-      <div class="field">
-        <label class="field-label">Onde sua cliente te encontra hoje?</label>
+      <div class="field"><label class="field-label">Quem é sua cliente ideal?</label><div class="field-hint">Idade, estilo de vida, interesses, renda</div><textarea name="cliente_ideal" placeholder="Ex: Mulheres de 25 a 40 anos, que praticam academia..."></textarea></div>
+      <div class="field"><label class="field-label">Em qual cidade ou região você atende?</label><input type="text" name="regiao" placeholder="Ex: Todo o Brasil / Online"/></div>
+      <div class="field"><label class="field-label">Onde sua cliente te encontra hoje?</label>
         <div class="check-group">
-          <label class="check-item"><input type="checkbox"/><span>Instagram (feed/stories)</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Indicação de amigas</span></label>
-          <label class="check-item"><input type="checkbox"/><span>WhatsApp</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Grupos do Facebook</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Outros</span></label>
+          <label class="check-item"><input type="checkbox" name="como_encontra" value="Instagram"/><span>Instagram (feed/stories)</span></label>
+          <label class="check-item"><input type="checkbox" name="como_encontra" value="Indicação"/><span>Indicação de amigas</span></label>
+          <label class="check-item"><input type="checkbox" name="como_encontra" value="WhatsApp"/><span>WhatsApp</span></label>
+          <label class="check-item"><input type="checkbox" name="como_encontra" value="Facebook"/><span>Grupos do Facebook</span></label>
+          <label class="check-item"><input type="checkbox" name="como_encontra" value="Outros"/><span>Outros</span></label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BLOCO 4: CONTEÚDO -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">4</div>
-      <div class="bloco-title">Conteúdo & Identidade</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">4</div><div class="bloco-title">Conteúdo & Identidade</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">Tem identidade visual definida?</label>
+      <div class="field"><label class="field-label">Tem identidade visual definida?</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="idvisual" value="sim"/><span>Sim, tenho logo, paleta e fontes</span></label>
-          <label class="radio-item"><input type="radio" name="idvisual" value="parcial"/><span>Tenho logo mas não é completo</span></label>
-          <label class="radio-item"><input type="radio" name="idvisual" value="nao"/><span>Não tenho ainda</span></label>
+          <label class="radio-item"><input type="radio" name="idvisual" value="Sim, completo"/><span>Sim, tenho logo, paleta e fontes</span></label>
+          <label class="radio-item"><input type="radio" name="idvisual" value="Parcial"/><span>Tenho logo mas não é completo</span></label>
+          <label class="radio-item"><input type="radio" name="idvisual" value="Não tenho"/><span>Não tenho ainda</span></label>
         </div>
       </div>
-      <div class="field">
-        <label class="field-label">Tem fotos e vídeos dos produtos disponíveis?</label>
+      <div class="field"><label class="field-label">Tem fotos e vídeos dos produtos disponíveis?</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="fotos" value="sim"/><span>Sim, tenho bastante material</span></label>
-          <label class="radio-item"><input type="radio" name="fotos" value="pouco"/><span>Tenho pouco material</span></label>
-          <label class="radio-item"><input type="radio" name="fotos" value="nao"/><span>Não tenho, precisamos produzir</span></label>
+          <label class="radio-item"><input type="radio" name="fotos" value="Sim, bastante"/><span>Sim, tenho bastante material</span></label>
+          <label class="radio-item"><input type="radio" name="fotos" value="Pouco"/><span>Tenho pouco material</span></label>
+          <label class="radio-item"><input type="radio" name="fotos" value="Não tenho"/><span>Não tenho, precisamos produzir</span></label>
         </div>
       </div>
-      <div class="field">
-        <label class="field-label">Cite 2 ou 3 perfis/marcas que admira no Instagram</label>
-        <div class="field-hint">Para entender a estética que você quer</div>
-        <textarea placeholder="Ex: @luiza_brasil, @colcci, @olympikus"></textarea>
-      </div>
-      <div class="field">
-        <label class="field-label">Como você descreveria o tom de voz da sua marca?</label>
+      <div class="field"><label class="field-label">Cite 2 ou 3 perfis/marcas que admira no Instagram</label><div class="field-hint">Para entender a estética que você quer</div><textarea name="referencias" placeholder="Ex: @luiza_brasil, @colcci, @olympikus"></textarea></div>
+      <div class="field"><label class="field-label">Tom de voz da marca</label>
         <div class="check-group">
-          <label class="check-item"><input type="checkbox"/><span>Elegante e sofisticado</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Divertido e descontraído</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Motivacional e empoderador</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Próximo e acolhedor</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Premium e exclusivo</span></label>
+          <label class="check-item"><input type="checkbox" name="tom" value="Elegante"/><span>Elegante e sofisticado</span></label>
+          <label class="check-item"><input type="checkbox" name="tom" value="Divertido"/><span>Divertido e descontraído</span></label>
+          <label class="check-item"><input type="checkbox" name="tom" value="Motivacional"/><span>Motivacional e empoderador</span></label>
+          <label class="check-item"><input type="checkbox" name="tom" value="Acolhedor"/><span>Próximo e acolhedor</span></label>
+          <label class="check-item"><input type="checkbox" name="tom" value="Premium"/><span>Premium e exclusivo</span></label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BLOCO 5: VENDAS -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">5</div>
-      <div class="bloco-title">Vendas & Metas</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">5</div><div class="bloco-title">Vendas & Metas</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">Como o cliente compra hoje?</label>
+      <div class="field"><label class="field-label">Como o cliente compra hoje?</label>
         <div class="check-group">
-          <label class="check-item"><input type="checkbox"/><span>WhatsApp (principal canal)</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Direct do Instagram</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Site / loja virtual</span></label>
-          <label class="check-item"><input type="checkbox"/><span>Loja física</span></label>
+          <label class="check-item"><input type="checkbox" name="canal_venda" value="WhatsApp"/><span>WhatsApp</span></label>
+          <label class="check-item"><input type="checkbox" name="canal_venda" value="Direct Instagram"/><span>Direct do Instagram</span></label>
+          <label class="check-item"><input type="checkbox" name="canal_venda" value="Site"/><span>Site / loja virtual</span></label>
+          <label class="check-item"><input type="checkbox" name="canal_venda" value="Loja física"/><span>Loja física</span></label>
         </div>
       </div>
-      <div class="field">
-        <label class="field-label">Quantas vendas você faz por mês hoje (média)?</label>
-        <select>
+      <div class="field"><label class="field-label">Quantas vendas por mês hoje (média)?</label>
+        <select name="vendas_mes">
           <option value="">Selecione</option>
           <option>Menos de 10</option>
           <option>10 a 30</option>
@@ -264,70 +214,36 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
           <option>Mais de 100</option>
         </select>
       </div>
-      <div class="field">
-        <label class="field-label">Qual sua meta de vendas para os próximos 3 meses?</label>
-        <textarea placeholder="Ex: Quero dobrar as vendas, chegar em 50 pedidos/mês, faturar R$ 10.000..."></textarea>
-      </div>
-      <div class="field">
-        <label class="field-label">Tem alguma data importante nos próximos meses?</label>
-        <div class="field-hint">Lançamentos, coleções, datas comemorativas</div>
-        <textarea placeholder="Ex: Lançamento da coleção de verão em outubro..."></textarea>
-      </div>
+      <div class="field"><label class="field-label">Meta de vendas para os próximos 3 meses</label><textarea name="meta_vendas" placeholder="Ex: Quero dobrar as vendas, faturar R$ 10.000..."></textarea></div>
+      <div class="field"><label class="field-label">Datas importantes nos próximos meses</label><div class="field-hint">Lançamentos, coleções, datas comemorativas</div><textarea name="datas" placeholder="Ex: Lançamento coleção de verão em outubro..."></textarea></div>
     </div>
   </div>
 
-  <!-- BLOCO 6: ACESSO -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">6</div>
-      <div class="bloco-title">Acessos & Senhas</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">6</div><div class="bloco-title">Acessos & Senhas</div></div>
     <div class="bloco-body">
-      <div class="aviso">
-        <p>🔒 Suas informações são <strong>confidenciais</strong> e usadas exclusivamente pela equipe para gerenciar suas contas. Nunca compartilhamos com terceiros.</p>
-      </div>
-      <div class="field">
-        <label class="field-label">E-mail do Instagram / Facebook</label>
-        <input type="email" placeholder="email@usado.no.instagram"/>
-      </div>
-      <div class="field">
-        <label class="field-label">Senha do Instagram / Facebook</label>
-        <input type="text" placeholder="Sua senha atual"/>
-      </div>
-      <div class="field">
-        <label class="field-label">Link do perfil do Instagram</label>
-        <input type="url" placeholder="https://instagram.com/coralifitoficial"/>
-      </div>
-      <div class="field">
-        <label class="field-label">Tem Gerenciador de Negócios (Meta Business)?</label>
+      <div class="aviso"><p>🔒 Suas informações são <strong>confidenciais</strong> e usadas exclusivamente pela equipe. Nunca compartilhamos com terceiros.</p></div>
+      <div class="field"><label class="field-label">E-mail do Instagram / Facebook</label><input type="email" name="email_insta" placeholder="email@usado.no.instagram"/></div>
+      <div class="field"><label class="field-label">Senha do Instagram / Facebook</label><input type="text" name="senha_insta" placeholder="Sua senha atual"/></div>
+      <div class="field"><label class="field-label">Link do perfil do Instagram</label><input type="url" name="link_insta" placeholder="https://instagram.com/coralifitoficial"/></div>
+      <div class="field"><label class="field-label">Tem Gerenciador de Negócios (Meta Business)?</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="business" value="sim"/><span>Sim — vou compartilhar o acesso</span></label>
-          <label class="radio-item"><input type="radio" name="business" value="nao"/><span>Não — preciso de ajuda para criar</span></label>
+          <label class="radio-item"><input type="radio" name="business" value="Sim"/><span>Sim — vou compartilhar o acesso</span></label>
+          <label class="radio-item"><input type="radio" name="business" value="Não"/><span>Não — preciso de ajuda para criar</span></label>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BLOCO 7: LIVRE -->
   <div class="bloco">
-    <div class="bloco-header">
-      <div class="bloco-num">7</div>
-      <div class="bloco-title">Observações Finais</div>
-    </div>
+    <div class="bloco-header"><div class="bloco-num">7</div><div class="bloco-title">Observações Finais</div></div>
     <div class="bloco-body">
-      <div class="field">
-        <label class="field-label">Tem alguma preocupação ou expectativa específica?</label>
-        <textarea placeholder="Pode falar livremente — o que você espera desse trabalho, o que já tentou e não funcionou, o que tem medo de acontecer..."></textarea>
-      </div>
-      <div class="field">
-        <label class="field-label">Mais alguma informação importante que devo saber?</label>
-        <textarea placeholder="Concorrentes diretos, restrições de conteúdo, parceiras influenciadoras, qualquer coisa relevante..."></textarea>
-      </div>
+      <div class="field"><label class="field-label">Expectativas e preocupações</label><textarea name="expectativas" placeholder="O que você espera desse trabalho, o que já tentou e não funcionou..."></textarea></div>
+      <div class="field"><label class="field-label">Outras informações importantes</label><textarea name="observacoes" placeholder="Concorrentes, restrições de conteúdo, influenciadoras parceiras..."></textarea></div>
     </div>
   </div>
 
-  <button type="submit" class="btn-enviar">Enviar Formulário</button>
-
+  <button type="submit" class="btn-enviar" id="btn">Enviar Formulário</button>
 </form>
 
 <div class="success" id="success">
@@ -339,11 +255,49 @@ footer p { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:u
 <footer><p>Cora·Li Fit · Formulário Confidencial</p></footer>
 
 <script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx3jzj35frYkiteEV7D5ci6vOMSEkz0FXdddrJq4W9XR6A8H7wL4LvRDeZJQB8lGOEm/exec';
+
 function enviar(e) {
   e.preventDefault();
-  document.getElementById('form').style.display = 'none';
-  document.getElementById('success').classList.add('visible');
-  window.scrollTo({top:0, behavior:'smooth'});
+  const btn = document.getElementById('btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const form = document.getElementById('form');
+  const data = {};
+
+  // Campos simples
+  form.querySelectorAll('input[type=text], input[type=email], input[type=tel], input[type=url], textarea, select').forEach(el => {
+    if (el.name) data[el.name] = el.value;
+  });
+
+  // Radio buttons
+  form.querySelectorAll('input[type=radio]:checked').forEach(el => {
+    data[el.name] = el.value;
+  });
+
+  // Checkboxes — agrupa por nome
+  const checks = {};
+  form.querySelectorAll('input[type=checkbox]:checked').forEach(el => {
+    if (!checks[el.name]) checks[el.name] = [];
+    checks[el.name].push(el.value);
+  });
+  for (var k in checks) { data[k] = checks[k].join(', '); }
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' },
+    mode: 'no-cors'
+  }).then(() => {
+    form.style.display = 'none';
+    document.getElementById('success').classList.add('visible');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }).catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Enviar Formulário';
+    alert('Erro ao enviar. Tente novamente.');
+  });
 }
 </script>
 </body>
