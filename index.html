@@ -5,89 +5,297 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Posicionamento Estratégico · Cora·Li Fit</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
-:root { --rose:#e8c4b8; --dark:#2c1f1a; --mocha:#6b4a3e; --cream:#f7f0eb; --gold:#c9a87c; --text:#3a2a24; --bg:#f0e8e3; --white:#ffffff; }
-* { margin:0; padding:0; box-sizing:border-box; }
-html,body { background:var(--bg); font-family:'Inter',sans-serif; color:var(--text); }
-.header { background:var(--dark); padding:18px 20px; display:flex; align-items:center; justify-content:space-between; }
-.header-logo { display:flex; align-items:center; gap:10px; }
-.header-logo img { width:36px; height:36px; border-radius:50%; object-fit:cover; }
-.header-brand { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:300; color:#fff; }
-.header-brand span { display:block; font-size:8px; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--rose); font-family:'Inter',sans-serif; }
-.header-date { font-size:9px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); }
-.cover { background:var(--dark); min-height:380px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 24px; position:relative; overflow:hidden; }
-.cover::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 30%,rgba(232,196,184,0.1),transparent 65%); }
-.cover::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--rose),transparent); }
-.cover-logo { width:72px; height:72px; border-radius:50%; overflow:hidden; border:1px solid rgba(232,196,184,0.3); margin-bottom:24px; z-index:1; }
-.cover-logo img { width:100%; height:100%; object-fit:cover; }
-.cover-tag { font-size:9px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--rose); opacity:0.7; margin-bottom:10px; z-index:1; }
-.cover-title { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,46px); font-weight:300; color:#fff; text-align:center; line-height:1.1; z-index:1; }
-.cover-title em { color:var(--rose); font-style:italic; }
-.cover-line { width:40px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:18px auto; z-index:1; }
-.cover-sub { font-size:10px; font-weight:300; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.3); z-index:1; }
-.nav { display:flex; overflow-x:auto; background:var(--dark); border-bottom:1px solid rgba(232,196,184,0.12); padding:0 16px; }
-.nav::-webkit-scrollbar { display:none; }
-.nav-item { padding:13px 14px; font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.35); cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent; transition:all 0.2s; flex-shrink:0; }
-.nav-item.active,.nav-item:hover { color:var(--rose); border-bottom-color:var(--rose); }
-.section { max-width:600px; margin:0 auto; padding:36px 18px; display:none; }
-.section.active { display:block; }
-.eyebrow { font-size:9px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-.sec-title { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,5vw,36px); font-weight:300; color:var(--dark); line-height:1.1; margin-bottom:6px; }
-.sec-title strong { font-weight:600; }
-.bar { width:32px; height:2px; background:var(--rose); margin-bottom:22px; }
-.card { background:var(--white); border-radius:12px; padding:18px; margin-bottom:12px; box-shadow:0 2px 8px rgba(44,31,26,0.06); }
-.card-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--dark); margin-bottom:6px; }
-.card-text { font-size:13px; font-weight:300; color:var(--mocha); line-height:1.7; }
-.card-text strong { font-weight:600; color:var(--dark); }
-.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
-.hl { background:var(--dark); border-radius:12px; padding:18px; margin-bottom:12px; }
-.hl-label { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--rose); opacity:0.7; margin-bottom:6px; }
-.hl-text { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; color:#fff; line-height:1.6; }
-.hl-text strong { color:var(--rose); font-style:italic; font-weight:400; }
-.comp-card { background:var(--white); border-radius:12px; padding:16px; margin-bottom:10px; border-left:3px solid var(--rose); box-shadow:0 2px 8px rgba(44,31,26,0.06); }
-.comp-name { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:var(--dark); margin-bottom:2px; }
-.comp-type { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--mocha); opacity:0.6; margin-bottom:10px; }
-.comp-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.comp-col-title { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:5px; }
-.comp-col-title.g { color:#2a7a3a; }
-.comp-col-title.r { color:#cc3333; }
-.comp-list { list-style:none; }
-.comp-list li { font-size:11.5px; font-weight:300; color:var(--mocha); line-height:1.6; padding-left:10px; position:relative; margin-bottom:2px; }
-.comp-list li::before { content:'·'; position:absolute; left:0; }
-.comp-list.g li::before { color:#2a7a3a; }
-.comp-list.r li::before { color:#cc3333; }
-.opp { background:linear-gradient(135deg,var(--cream),#ede5df); border-radius:12px; padding:16px; margin-bottom:10px; border:1px solid rgba(232,196,184,0.4); }
-.opp-icon { font-size:20px; margin-bottom:6px; }
-.opp-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:600; color:var(--dark); margin-bottom:4px; }
-.opp-text { font-size:12px; font-weight:300; color:var(--mocha); line-height:1.6; }
-.pilar { background:var(--white); border-radius:12px; padding:16px; margin-bottom:10px; box-shadow:0 2px 8px rgba(44,31,26,0.06); position:relative; overflow:hidden; }
-.pilar::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--rose),var(--gold)); }
-.pilar-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--rose); opacity:0.2; position:absolute; top:6px; right:12px; line-height:1; }
-.pilar-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:600; color:var(--dark); margin-bottom:4px; }
-.pilar-text { font-size:12px; font-weight:300; color:var(--mocha); line-height:1.6; }
-.insight-chip { display:inline-block; background:rgba(232,196,184,0.25); border:1px solid rgba(232,196,184,0.5); border-radius:20px; padding:4px 10px; font-size:11px; font-weight:500; color:var(--mocha); margin:3px; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600&display=swap');
+:root {
+  --rose:#e8c4b8; --dark:#2c1f1a; --mocha:#6b4a3e;
+  --cream:#f7f0eb; --gold:#c9a87c; --text:#3a2a24; --bg:#f0e8e3; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--text);}
+
+/* HEADER */
+.header{background:var(--dark);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.header-logo{display:flex;align-items:center;gap:10px;}
+.header-logo img{width:34px;height:34px;border-radius:50%;object-fit:cover;}
+.header-brand{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:300;color:#fff;}
+.header-brand span{display:block;font-size:8px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-family:'Inter',sans-serif;}
+.header-date{font-size:9px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+
+/* COVER */
+.cover{background:var(--dark);min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(232,196,184,0.1),transparent 65%);}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent);}
+.cover-logo{width:68px;height:68px;border-radius:50%;overflow:hidden;border:1px solid rgba(232,196,184,0.3);margin-bottom:22px;z-index:1;}
+.cover-logo img{width:100%;height:100%;object-fit:cover;}
+.cover-tag{font-size:9px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--rose);opacity:.7;margin-bottom:8px;z-index:1;}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,6vw,44px);font-weight:300;color:#fff;text-align:center;line-height:1.1;z-index:1;}
+.cover-title em{color:var(--rose);font-style:italic;}
+.cover-line{width:38px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto;z-index:1;}
+.cover-sub{font-size:10px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.28);z-index:1;}
+
+/* NAV */
+.nav{display:flex;overflow-x:auto;background:var(--dark);border-bottom:1px solid rgba(232,196,184,0.1);padding:0 10px;}
+.nav::-webkit-scrollbar{display:none;}
+.nav-item{padding:12px 11px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.32);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;flex-shrink:0;}
+.nav-item.active,.nav-item:hover{color:var(--rose);border-bottom-color:var(--rose);}
+
+/* SECTIONS */
+.section{max-width:580px;margin:0 auto;padding:30px 18px;display:none;}
+.section.active{display:block;}
+.eyebrow{font-size:9px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,34px);font-weight:300;color:var(--dark);line-height:1.1;margin-bottom:5px;}
+.sec-title strong{font-weight:600;}
+.bar{width:30px;height:2px;background:var(--rose);margin-bottom:18px;}
+
+/* CARDS */
+.card{background:var(--white);border-radius:12px;padding:16px;margin-bottom:10px;box-shadow:0 2px 8px rgba(44,31,26,.06);}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--dark);margin-bottom:5px;}
+.card-text{font-size:12.5px;font-weight:300;color:var(--mocha);line-height:1.7;}
+.card-text strong{font-weight:600;color:var(--dark);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.hl{background:var(--dark);border-radius:12px;padding:16px;margin-bottom:10px;}
+.hl-label{font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rose);opacity:.7;margin-bottom:5px;}
+.hl-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:#fff;line-height:1.6;}
+.hl-text strong{color:var(--rose);font-style:italic;font-weight:400;}
+.insight-chip{display:inline-block;background:rgba(232,196,184,.22);border:1px solid rgba(232,196,184,.45);border-radius:20px;padding:3px 9px;font-size:11px;font-weight:500;color:var(--mocha);margin:2px;}
+.opp{background:linear-gradient(135deg,var(--cream),#ede5df);border-radius:12px;padding:14px;margin-bottom:9px;border:1px solid rgba(232,196,184,.4);}
+.opp-icon{font-size:18px;margin-bottom:5px;}
+.opp-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--dark);margin-bottom:3px;}
+.opp-text{font-size:11.5px;font-weight:300;color:var(--mocha);line-height:1.6;}
+.pilar{background:var(--white);border-radius:12px;padding:14px;margin-bottom:9px;box-shadow:0 2px 8px rgba(44,31,26,.06);position:relative;overflow:hidden;}
+.pilar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--rose),var(--gold));}
+.pilar-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--rose);opacity:.18;position:absolute;top:4px;right:10px;line-height:1;}
+.pilar-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--dark);margin-bottom:3px;}
+.pilar-text{font-size:11.5px;font-weight:300;color:var(--mocha);line-height:1.6;}
+.comp-card{background:var(--white);border-radius:12px;padding:14px;margin-bottom:9px;border-left:3px solid var(--rose);box-shadow:0 2px 8px rgba(44,31,26,.06);}
+.comp-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--dark);margin-bottom:2px;}
+.comp-type{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mocha);opacity:.6;margin-bottom:8px;}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cct{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.cct.g{color:#2a7a3a;} .cct.r{color:#cc3333;}
+.ccl{list-style:none;}
+.ccl li{font-size:11px;font-weight:300;color:var(--mocha);line-height:1.6;padding-left:9px;position:relative;margin-bottom:2px;}
+.ccl li::before{content:'·';position:absolute;left:0;}
+.ccl.g li::before{color:#2a7a3a;} .ccl.r li::before{color:#cc3333;}
+
 /* CALENDÁRIO */
-.mes-header { background:var(--dark); border-radius:12px 12px 0 0; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; }
-.mes-nome { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; color:#fff; }
-.mes-tag { font-size:9px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--rose); opacity:0.7; }
-.mes-body { background:var(--white); border-radius:0 0 12px 12px; padding:16px; margin-bottom:16px; box-shadow:0 2px 8px rgba(44,31,26,0.06); }
-.semana { margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(232,196,184,0.3); }
-.semana:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
-.semana-label { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--mocha); opacity:0.55; margin-bottom:10px; }
-.post-item { display:flex; gap:10px; align-items:flex-start; margin-bottom:8px; }
-.post-icon { width:26px; height:26px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0; }
-.post-icon.r { background:rgba(232,196,184,0.25); }
-.post-icon.f { background:rgba(201,168,124,0.18); }
-.post-icon.s { background:rgba(107,74,62,0.1); }
-.post-info { flex:1; }
-.post-formato { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mocha); opacity:0.55; }
-.post-tema { font-size:13px; font-weight:500; color:var(--dark); margin-top:1px; }
-.post-desc { font-size:11px; font-weight:300; color:var(--mocha); margin-top:2px; line-height:1.5; }
-.legenda { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
-.leg-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--mocha); }
-.leg-dot { width:10px; height:10px; border-radius:3px; }
-footer { background:var(--dark); padding:18px 20px; text-align:center; margin-top:32px; }
-footer p { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.18); }
+.mes-header{background:var(--dark);border-radius:12px 12px 0 0;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;}
+.mes-nome{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#fff;}
+.mes-tag{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--rose);opacity:.7;}
+.mes-body{background:var(--white);border-radius:0 0 12px 12px;padding:14px;margin-bottom:14px;box-shadow:0 2px 8px rgba(44,31,26,.06);}
+.semana{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid rgba(232,196,184,.25);}
+.semana:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.semana-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--mocha);opacity:.5;margin-bottom:8px;}
+.post-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:7px;}
+.post-icon{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.pi-r{background:rgba(232,196,184,.25);}
+.pi-f{background:rgba(201,168,124,.18);}
+.pi-s{background:rgba(107,74,62,.1);}
+.pi-e{background:rgba(201,168,124,.35);}
+.post-info{flex:1;}
+.post-formato{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mocha);opacity:.5;}
+.post-tema{font-size:12.5px;font-weight:500;color:var(--dark);margin-top:1px;}
+.post-desc{font-size:11px;font-weight:300;color:var(--mocha);margin-top:2px;line-height:1.5;}
+.legenda{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mocha);}
+.leg-dot{width:9px;height:9px;border-radius:3px;}
+
+/* ══ INAUGURAÇÃO ══ */
+
+/* SAVE THE DATE */
+.save-the-date {
+  background: #f5f0eb;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 20px rgba(44,31,26,.12);
+  position: relative;
+}
+.std-calendar {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 1px;
+  background: #ddd;
+  padding: 1px;
+}
+.std-day-header {
+  background: var(--dark);
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  padding: 6px 0;
+}
+.std-day {
+  background: #f5f0eb;
+  text-align: center;
+  padding: 8px 4px;
+  font-size: 12px;
+  font-weight: 300;
+  color: #aaa;
+  position: relative;
+}
+.std-day.current-month { color: var(--text); }
+.std-day.highlighted {
+  background: var(--dark);
+  color: var(--white);
+  font-weight: 700;
+  position: relative;
+}
+.std-day.highlighted::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(1.05)} }
+
+.std-overlay {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #f5f0eb, var(--cream));
+}
+.std-save { font-family:'Cormorant Garamond',serif; font-size:11px; font-weight:600; letter-spacing:6px; text-transform:uppercase; color:var(--mocha); margin-bottom:4px; }
+.std-date-big { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--dark); line-height:1; }
+.std-month { font-size:10px; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--gold); margin-top:4px; }
+.std-script { font-family:'Dancing Script',cursive; font-size:17px; color:var(--mocha); margin:12px 0 4px; }
+.std-local { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--mocha); opacity:.6; }
+.std-coming { font-family:'Dancing Script',cursive; font-size:22px; color:var(--gold); margin-top:10px; }
+.std-line { width:40px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:12px auto; }
+.std-logo-small { width:40px; height:40px; border-radius:50%; overflow:hidden; border:1px solid rgba(201,168,124,.3); margin:0 auto; }
+.std-logo-small img { width:100%; height:100%; object-fit:cover; }
+
+/* PRESSKIT */
+.presskit-hero {
+  background: var(--dark);
+  border-radius: 14px;
+  padding: 24px 20px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.presskit-hero::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,124,.15), transparent 70%);
+}
+.pk-label { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.pk-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:#fff; margin-bottom:4px; }
+.pk-sub { font-size:12px; font-weight:300; color:rgba(255,255,255,.45); line-height:1.6; }
+
+.pk-ref { width:100%; border-radius:10px; overflow:hidden; margin-bottom:12px; }
+.pk-ref img { width:100%; height:auto; display:block; }
+.pk-ref-caption { background:var(--cream); padding:8px 12px; font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--mocha); opacity:.7; }
+
+.caixa-visual {
+  background: var(--cream);
+  border: 1px solid rgba(201,168,124,.3);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.caixa-header {
+  background: var(--dark);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.caixa-header-title { font-family:'Cormorant Garamond',serif; font-size:16px; font-weight:300; color:#fff; }
+.caixa-pattern {
+  padding: 16px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(201,168,124,.06) 0px,
+    rgba(201,168,124,.06) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.caixa-item {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 10px 12px;
+  flex: 1;
+  min-width: 120px;
+  border: 1px solid rgba(201,168,124,.25);
+}
+.ci-icon { font-size:18px; margin-bottom:5px; }
+.ci-title { font-size:12px; font-weight:600; color:var(--dark); margin-bottom:3px; }
+.ci-desc { font-size:11px; font-weight:300; color:var(--mocha); line-height:1.5; }
+
+.kit-timeline { position:relative; margin-bottom:12px; }
+.kt-item { display:flex; gap:12px; margin-bottom:12px; padding-left:4px; }
+.kt-dot { width:20px; height:20px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#fff; margin-top:2px; }
+.kt-dot.rose { background:var(--rose); }
+.kt-dot.gold { background:var(--gold); }
+.kt-content { flex:1; }
+.kt-step { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:2px; }
+.kt-title { font-size:13px; font-weight:600; color:var(--dark); margin-bottom:2px; }
+.kt-desc { font-size:11.5px; font-weight:300; color:var(--mocha); line-height:1.6; }
+
+/* CAMPANHA FASES */
+.fase { border-radius:12px; margin-bottom:10px; overflow:hidden; box-shadow:0 2px 8px rgba(44,31,26,.06); }
+.fase-header { padding:11px 14px; display:flex; align-items:center; gap:9px; }
+.fase-num { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#fff; flex-shrink:0; }
+.fase-titulo { font-family:'Cormorant Garamond',serif; font-size:15px; font-weight:600; color:#fff; }
+.fase-periodo { font-size:9px; font-weight:300; color:rgba(255,255,255,.5); margin-top:1px; }
+.fase-body { padding:12px 14px; background:var(--white); }
+.fi { font-size:12px; font-weight:300; color:var(--mocha); line-height:1.65; padding-left:12px; position:relative; margin-bottom:4px; }
+.fi::before { content:'→'; position:absolute; left:0; color:var(--rose); font-size:9px; }
+.fi strong { font-weight:600; color:var(--dark); }
+
+/* INFLUENCER */
+.inf-card { background:var(--white); border-radius:12px; padding:14px; margin-bottom:9px; box-shadow:0 2px 8px rgba(44,31,26,.06); display:flex; gap:12px; align-items:flex-start; }
+.inf-av { width:40px; height:40px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; border:1.5px solid rgba(232,196,184,.4); }
+.inf-info { flex:1; }
+.inf-nome { font-size:13px; font-weight:600; color:var(--dark); margin-bottom:1px; }
+.inf-handle { font-size:11px; font-weight:500; color:var(--rose); margin-bottom:3px; }
+.inf-desc { font-size:11px; font-weight:300; color:var(--mocha); line-height:1.55; }
+.inf-tag { display:inline-block; font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:2px 7px; border-radius:9px; margin-top:4px; background:rgba(232,196,184,.2); color:var(--mocha); }
+
+/* INAUG HERO */
+.inaug-hero { background:linear-gradient(135deg,var(--dark) 60%,#4a2a1a); border-radius:14px; padding:26px 20px; text-align:center; margin-bottom:14px; position:relative; overflow:hidden; }
+.inaug-hero::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,124,.18),transparent 70%); }
+.inaug-data { font-family:'Cormorant Garamond',serif; font-size:54px; color:var(--gold); line-height:1; letter-spacing:2px; }
+.inaug-mes { font-size:13px; font-weight:300; letter-spacing:6px; text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:2px; }
+.inaug-titulo { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:#fff; margin-top:14px; line-height:1.2; }
+.inaug-titulo em { color:var(--rose); font-style:italic; }
+.inaug-local { font-size:10px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.35); margin-top:8px; }
+
+/* ROTEIRO */
+.tl { position:relative; margin-bottom:12px; }
+.tl::before { content:''; position:absolute; left:14px; top:0; bottom:0; width:1px; background:linear-gradient(180deg,var(--rose),var(--gold),transparent); }
+.tl-item { display:flex; gap:14px; margin-bottom:14px; padding-left:6px; }
+.tl-dot { width:18px; height:18px; border-radius:50%; flex-shrink:0; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:9px; color:#fff; font-weight:700; z-index:1; }
+.tl-dot.r { background:var(--rose); }
+.tl-dot.g { background:var(--gold); }
+.tl-hora { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:2px; }
+.tl-titulo { font-size:13px; font-weight:600; color:var(--dark); margin-bottom:2px; }
+.tl-desc { font-size:11.5px; font-weight:300; color:var(--mocha); line-height:1.6; }
+
+/* HASHTAGS */
+.hashtags { background:var(--dark); border-radius:12px; padding:16px; margin-bottom:10px; }
+.ht-label { font-size:9px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--rose); opacity:.7; margin-bottom:8px; }
+.ht-list { display:flex; flex-wrap:wrap; gap:6px; }
+.ht { background:rgba(232,196,184,.1); border:1px solid rgba(232,196,184,.2); border-radius:20px; padding:4px 10px; font-size:11px; color:var(--rose); }
+
+/* REF IMAGES */
+.ref-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
+.ref-img { border-radius:10px; overflow:hidden; }
+.ref-img img { width:100%; height:140px; object-fit:cover; display:block; }
+.ref-cap { background:var(--cream); padding:6px 10px; font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--mocha); opacity:.7; }
+
+footer { background:var(--dark); padding:16px 20px; text-align:center; margin-top:28px; }
+footer p { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.15); }
 </style>
 </head>
 <body>
@@ -95,7 +303,7 @@ footer p { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:up
 <div class="header">
   <div class="header-logo">
     <img src="data:image/jpeg;base64,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" alt="Cora·Li"/>
-    <div class="header-brand">Cora·Li Fit<span>Estratégia & Conteúdo</span></div>
+    <div class="header-brand">Cora·Li Fit<span>Estratégia & Inauguração</span></div>
   </div>
   <div class="header-date">Julho 2026</div>
 </div>
@@ -103,470 +311,346 @@ footer p { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:up
 <div class="cover">
   <div class="cover-logo"><img src="data:image/jpeg;base64,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" alt="Cora·Li"/></div>
   <div class="cover-tag">Documento Estratégico</div>
-  <div class="cover-title">Posicionamento<br><em>& Calendário</em><br>de Conteúdo</div>
+  <div class="cover-title">Posicionamento<br><em>& Grand Opening</em><br>Cora·Li Fit</div>
   <div class="cover-line"></div>
-  <div class="cover-sub">Cora·Li Fit · Moda Fitness Feminina</div>
+  <div class="cover-sub">Taguatinga · Distrito Federal · 08.08.2026</div>
 </div>
 
 <nav class="nav">
   <div class="nav-item active" onclick="show('mercado',this)">Mercado</div>
   <div class="nav-item" onclick="show('concorrentes',this)">Concorrentes</div>
   <div class="nav-item" onclick="show('posicionamento',this)">Posicionamento</div>
+  <div class="nav-item" onclick="show('inauguracao',this)" style="color:var(--gold);">🥂 Grand Opening</div>
   <div class="nav-item" onclick="show('calendario',this)">Calendário</div>
 </nav>
 
-<!-- MERCADO -->
+<!-- ══ MERCADO ══ -->
 <div class="section active" id="mercado">
-  <div class="eyebrow">01 — Análise de Mercado</div>
+  <div class="eyebrow">01 Análise de Mercado</div>
   <div class="sec-title">O Cenário do <strong>Fitness Feminino</strong></div>
   <div class="bar"></div>
-
   <div class="hl">
-    <div class="hl-label">Diagnóstico inicial — @coralifit</div>
-    <div class="hl-text">Marca com <strong>menos de 6 meses</strong>, entre 500 e 1.000 seguidores, fazendo de 10 a 30 vendas/mês pelo WhatsApp e Direct. <strong>Meta: 60 vendas/mês.</strong> Potencial enorme — a base está pronta para escalar.</div>
+    <div class="hl-label">Diagnóstico @coralifit</div>
+    <div class="hl-text">Menos de 6 meses de marca, 500–1.000 seguidores, 10–30 vendas/mês. <strong>Meta: 60 vendas/mês.</strong> Loja física em Taguatinga abrindo 08/08 o maior marco da marca até aqui.</div>
   </div>
-
   <div class="grid2">
-    <div class="card">
-      <div class="card-title">📈 Crescimento</div>
-      <div class="card-text">Moda fitness feminina é um dos setores que mais cresce no digital brasileiro em 2026, impulsionado pelo <strong>athleisure</strong> — roupa que vai da academia ao dia a dia.</div>
-    </div>
-    <div class="card">
-      <div class="card-title">📱 Canal</div>
-      <div class="card-text">A cliente descobre no Instagram e <strong>fecha no WhatsApp</strong> — exatamente o modelo da Cora·Li. Isso é vantagem competitiva.</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🎯 Público</div>
-      <div class="card-text">Mulheres de <strong>20 a 40 anos</strong>, ativas, renda média-alta, compram online. Valorizam qualidade, conforto e estilo.</div>
-    </div>
-    <div class="card">
-      <div class="card-title">📍 Foco</div>
-      <div class="card-text">Online para todo o Brasil, com <strong>foco maior no DF</strong>. Estratégia local + nacional — ideal para crescer com consistência.</div>
-    </div>
+    <div class="card"><div class="card-title">📈 Crescimento</div><div class="card-text">Moda fitness feminina é um dos setores que mais crescem no digital brasileiro em 2026, puxado pelo <strong>athleisure</strong> que vai da academia ao dia a dia.</div></div>
+    <div class="card"><div class="card-title">📱 Canal</div><div class="card-text">A cliente descobre no Instagram e <strong>fecha no WhatsApp</strong>. Agora também pela loja física canal que multiplica credibilidade.</div></div>
+    <div class="card"><div class="card-title">🎯 Público</div><div class="card-text">Mulheres de <strong>20 a 40 anos</strong>, ativas, renda média-alta. Valorizam qualidade, conforto e estilo.</div></div>
+    <div class="card"><div class="card-title">📍 Território</div><div class="card-text">Online para todo o Brasil com <strong>foco no DF</strong>. A loja de Taguatinga ancora a marca na região.</div></div>
   </div>
-
-  <div class="card">
-    <div class="card-title">🔥 Por que agora é o momento certo</div>
-    <div class="card-text">A Cora·Li está entrando no mercado em um momento de alta demanda. Marcas com <strong>menos de 6 meses que investem em conteúdo e tráfego desde o início</strong> chegam ao ano 1 com uma base sólida de clientes e reconhecimento. Essa janela de posicionamento é valiosa — e vamos aproveitar.</div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">📅 Datas estratégicas — Agosto</div>
-    <div class="card-text">
-      <strong>Quartas-feiras:</strong> Lançamento de novidades (estratégia da marca)<br>
-      <strong>Fim das férias escolares:</strong> Conteúdo de "volta à rotina" — perfeito para empurrar compras de quem quer retomar os treinos<br>
-      <strong>Dia dos Pais (2ª semana/ago):</strong> Oportunidade para kit presente ou collab
-    </div>
-  </div>
+  <div class="card"><div class="card-title">🔥 A loja física muda o jogo</div><div class="card-text">Ter um ponto físico em Taguatinga coloca a Cora·Li em outro patamar no DF. <strong>Credibilidade, experiência de marca e prova social</strong> se multiplicam. A inauguração é o momento de maior visibilidade desde a criação da marca.</div></div>
+  <div class="card"><div class="card-title">📅 Datas estratégicas Agosto</div><div class="card-text"><strong>08/08 Inauguração da loja física</strong> 🎉<br>Quartas-feiras: lançamento de novidades<br>Fim das férias escolares: conteúdo de "volta à rotina"</div></div>
 </div>
 
-<!-- CONCORRENTES -->
+<!-- ══ CONCORRENTES ══ -->
 <div class="section" id="concorrentes">
-  <div class="eyebrow">02 — Análise de Concorrência</div>
+  <div class="eyebrow">02 Análise de Concorrência</div>
   <div class="sec-title">Quem está no <strong>Mercado</strong></div>
   <div class="bar"></div>
-
   <div class="hl">
-    <div class="hl-label">Referências indicadas pela cliente</div>
-    <div class="hl-text">@alst · @bodyfit · @sejabiofit · @amordepeca<br><strong style="font-size:13px;font-weight:400;">Perfis que combinam estética com propósito. A Cora·Li deve ter essa mesma sofisticação visual.</strong></div>
+    <div class="hl-label">Referências da Nicolle</div>
+    <div class="hl-text">@alst · @bodyfit · @sejabiofit · @amordepeca perfis que combinam estética com propósito. <strong>A Cora·Li une essa sofisticação com presença física local.</strong></div>
   </div>
-
-  <div class="comp-card">
-    <div class="comp-name">@alst / @bodyfit</div>
-    <div class="comp-type">Concorrência direta — mesmo nicho</div>
-    <div class="comp-grid">
-      <div>
-        <div class="comp-col-title g">✓ Fortes</div>
-        <ul class="comp-list g">
-          <li>Identidade visual coesa</li>
-          <li>Conteúdo frequente</li>
-          <li>Boa base de seguidores</li>
-        </ul>
-      </div>
-      <div>
-        <div class="comp-col-title r">✗ Vulnerável</div>
-        <ul class="comp-list r">
-          <li>Comunicação padronizada</li>
-          <li>Pouca humanização</li>
-          <li>Sem diferencial claro de estilo</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="comp-card">
-    <div class="comp-name">@sejabiofit</div>
-    <div class="comp-type">Concorrente com propósito</div>
-    <div class="comp-grid">
-      <div>
-        <div class="comp-col-title g">✓ Fortes</div>
-        <ul class="comp-list g">
-          <li>Forte propósito de marca</li>
-          <li>Comunidade engajada</li>
-          <li>Tom de voz autêntico</li>
-        </ul>
-      </div>
-      <div>
-        <div class="comp-col-title r">✗ Vulnerável</div>
-        <ul class="comp-list r">
-          <li>Foco em sustentabilidade pode afastar</li>
-          <li>Preço mais alto</li>
-          <li>Estética menos aspiracional</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="comp-card">
-    <div class="comp-name">@amordepeca</div>
-    <div class="comp-type">Referência de estética — não fitness</div>
-    <div class="comp-grid">
-      <div>
-        <div class="comp-col-title g">✓ O que aprender</div>
-        <ul class="comp-list g">
-          <li>Estética editorial impecável</li>
-          <li>Storytelling de marca</li>
-          <li>Conteúdo que gera desejo</li>
-        </ul>
-      </div>
-      <div>
-        <div class="comp-col-title r">✗ Diferença</div>
-        <ul class="comp-list r">
-          <li>Não é fitness — gap que a Cora·Li ocupa</li>
-          <li>Ticket mais alto</li>
-          <li>Público ligeiramente diferente</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="comp-card">
-    <div class="comp-name">Grandes marcas (Olympikus, Lupo)</div>
-    <div class="comp-type">Concorrência indireta</div>
-    <div class="comp-grid">
-      <div>
-        <div class="comp-col-title g">✓ Fortes</div>
-        <ul class="comp-list g">
-          <li>Alto reconhecimento</li>
-          <li>Grande budget de mídia</li>
-          <li>Distribuição ampla</li>
-        </ul>
-      </div>
-      <div>
-        <div class="comp-col-title r">✗ Vulnerável</div>
-        <ul class="comp-list r">
-          <li>Comunicação fria e genérica</li>
-          <li>Sem venda pelo WhatsApp</li>
-          <li>Sem conexão com nicho específico</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="eyebrow" style="margin-top:24px;">Oportunidades para a Cora·Li</div>
-  <div class="sec-title" style="font-size:22px;">Onde <strong>nos destacamos</strong></div>
-  <div class="bar"></div>
-
-  <div class="opp"><div class="opp-icon">✨</div><div class="opp-title">Estética de @amordepeca no mundo fitness</div><div class="opp-text">Trazer a sofisticação editorial das marcas de moda para o universo fitness feminino. Isso é um gap claro no mercado.</div></div>
-  <div class="opp"><div class="opp-icon">💬</div><div class="opp-title">Proximidade que as grandes não têm</div><div class="opp-text">Atendimento pelo WhatsApp, respostas rápidas, conteúdo próximo. A cliente se sente tratada de forma especial.</div></div>
-  <div class="opp"><div class="opp-icon">📍</div><div class="opp-title">Dominar o DF antes de escalar</div><div class="opp-text">Fortalecer a base no DF com entregas rápidas, eventos locais e comunidade, depois escalar para o Brasil.</div></div>
-  <div class="opp"><div class="opp-icon">🎯</div><div class="opp-title">Tráfego pago desde o início</div><div class="opp-text">Com a conta do Meta já ativa e experiência prévia com anúncios, temos vantagem para escalar rápido e chegar às 60 vendas/mês.</div></div>
+  <div class="comp-card"><div class="comp-name">@alst / @bodyfit</div><div class="comp-type">Concorrência direta mesmo nicho</div><div class="comp-grid"><div><div class="cct g">✓ Fortes</div><ul class="ccl g"><li>Identidade visual coesa</li><li>Conteúdo frequente</li><li>Base sólida</li></ul></div><div><div class="cct r">✗ Fraquezas</div><ul class="ccl r"><li>Comunicação padronizada</li><li>Pouca humanização</li><li>Sem loja física local</li></ul></div></div></div>
+  <div class="comp-card"><div class="comp-name">@sejabiofit</div><div class="comp-type">Concorrente com propósito</div><div class="comp-grid"><div><div class="cct g">✓ Fortes</div><ul class="ccl g"><li>Forte propósito de marca</li><li>Comunidade engajada</li><li>Tom autêntico</li></ul></div><div><div class="cct r">✗ Fraquezas</div><ul class="ccl r"><li>Preço elevado</li><li>Sem loja no DF</li><li>Estética menos aspiracional</li></ul></div></div></div>
+  <div class="comp-card"><div class="comp-name">@amordepeca</div><div class="comp-type">Referência de estética não fitness</div><div class="comp-grid"><div><div class="cct g">✓ O que aprender</div><ul class="ccl g"><li>Estética editorial</li><li>Storytelling de marca</li><li>Conteúdo que gera desejo</li></ul></div><div><div class="cct r">✗ Gap que a Cora·Li ocupa</div><ul class="ccl r"><li>Não é fitness</li><li>Ticket mais alto</li></ul></div></div></div>
+  <div style="margin-top:18px;margin-bottom:8px;"><div class="eyebrow">Oportunidades</div><div class="sec-title" style="font-size:20px;">Onde nos <strong>destacamos</strong></div><div class="bar"></div></div>
+  <div class="opp"><div class="opp-icon">🏪</div><div class="opp-title">Única com loja física no DF</div><div class="opp-text">Nenhuma das referências tem ponto físico em Taguatinga. A Cora·Li ocupa esse espaço com exclusividade.</div></div>
+  <div class="opp"><div class="opp-icon">✨</div><div class="opp-title">Estética premium no fitness local</div><div class="opp-text">Sofisticação de @amordepeca dentro do universo fitness feminino do DF. Gap claro.</div></div>
+  <div class="opp"><div class="opp-icon">💬</div><div class="opp-title">Proximidade que as grandes não têm</div><div class="opp-text">WhatsApp + loja física = experiência completa que nenhum concorrente direto oferece.</div></div>
 </div>
 
-<!-- POSICIONAMENTO -->
+<!-- ══ POSICIONAMENTO ══ -->
 <div class="section" id="posicionamento">
-  <div class="eyebrow">03 — Posicionamento Estratégico</div>
+  <div class="eyebrow">03 Posicionamento Estratégico</div>
   <div class="sec-title">Como a Cora·Li <strong>se posiciona</strong></div>
   <div class="bar"></div>
+  <div class="hl"><div class="hl-label">Essência da Marca</div><div class="hl-text">A Cora·Li Fit veste a mulher que <strong>cuida de si, move seu corpo</strong> e não abre mão de se sentir <strong>bonita e confiante</strong> em cada momento.</div></div>
+  <div class="card" style="border-left:3px solid var(--rose);"><div class="card-title">🎯 Proposta de Valor</div><div class="card-text">Roupas fitness femininas com <strong>design elegante, caimento impecável e qualidade que dura</strong> para a mulher que leva a atividade física a sério e quer se sentir poderosa de dentro pra fora.</div></div>
+  <div class="card" style="border-left:3px solid var(--gold);"><div class="card-title">👩 Perfil real da cliente</div><div class="card-text">20 a 40 anos, praticam atividade física ou desejam adotar estilo saudável. Valorizam conforto, qualidade e beleza. Renda média-alta. Compram online e agora também na <strong>loja de Taguatinga</strong>.</div></div>
+  <div class="card" style="border-left:3px solid var(--mocha);"><div class="card-title">🗣️ Tom de Voz</div><div class="card-text"><strong>Elegante e acolhedor.</strong> Sofisticação com calor humano. Inspira, conecta e converte.</div></div>
+  <div class="card"><div class="card-title">🏷️ Palavras da marca</div><div><span class="insight-chip">Elegante</span><span class="insight-chip">Acolhedora</span><span class="insight-chip">Funcional</span><span class="insight-chip">Confiante</span><span class="insight-chip">Feminina</span><span class="insight-chip">Ativa</span><span class="insight-chip">Premium</span><span class="insight-chip">Local + Nacional</span></div></div>
+  <div style="margin-top:18px;margin-bottom:8px;"><div class="eyebrow">Pilares</div><div class="sec-title" style="font-size:20px;">O que a marca <strong>comunica</strong></div><div class="bar"></div></div>
+  <div class="pilar"><div class="pilar-num">01</div><div class="pilar-title">Estilo de Vida Ativo</div><div class="pilar-text">Peças em contexto real academia, caminhada, rotina. A cliente precisa se ver usando.</div></div>
+  <div class="pilar"><div class="pilar-num">02</div><div class="pilar-title">Qualidade & Caimento</div><div class="pilar-text">Tecido, acabamento, como cai no corpo. Gera confiança para comprar sem experimentar.</div></div>
+  <div class="pilar"><div class="pilar-num">03</div><div class="pilar-title">Empoderamento Feminino</div><div class="pilar-text">Celebrar a mulher que cuida de si. Motivacional, autêntico, sem clichê.</div></div>
+  <div class="pilar"><div class="pilar-num">04</div><div class="pilar-title">Novidades às Quartas</div><div class="pilar-text">Ritual semanal que cria expectativa e hábito de acompanhar o perfil.</div></div>
+  <div class="pilar"><div class="pilar-num">05</div><div class="pilar-title">Experiência na Loja</div><div class="pilar-text">A loja em Taguatinga é extensão da marca. Cada visita deve ser memorável e instagramável.</div></div>
+  <div class="hl" style="margin-top:14px;"><div class="hl-label">Frase de Posicionamento</div><div class="hl-text"><strong>"Para a mulher que não para e não precisa escolher entre performance e elegância."</strong></div></div>
+</div>
 
-  <div class="hl">
-    <div class="hl-label">Essência da Marca</div>
-    <div class="hl-text">A Cora·Li Fit veste a mulher que <strong>cuida de si, move seu corpo</strong> e não abre mão de se sentir <strong>bonita e confiante</strong> em cada momento.</div>
+<!-- ══ INAUGURAÇÃO ══ -->
+<div class="section" id="inauguracao">
+  <div class="eyebrow">04 Grand Opening</div>
+  <div class="sec-title">Campanha de <strong>Inauguração</strong></div>
+  <div class="bar"></div>
+
+  <!-- SAVE THE DATE -->
+  <div class="eyebrow" style="margin-bottom:5px;">Save the Date</div>
+  <div class="sec-title" style="font-size:20px;">Comunicado <strong>Visual</strong></div>
+  <div class="bar"></div>
+
+  <div class="ref-grid">
+    <div class="ref-img"><img src="data:image/jpeg;base64,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" alt="Referência Save the Date"/><div class="ref-cap">Referência de estilo</div></div>
+    <div class="ref-img"><img src="data:image/jpeg;base64,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" alt="Referência Press Kit"/><div class="ref-cap">Referência press kit</div></div>
   </div>
 
-  <div class="card" style="border-left:3px solid var(--rose);">
-    <div class="card-title">🎯 Proposta de Valor</div>
-    <div class="card-text">Roupas fitness femininas com <strong>design elegante, caimento impecável e qualidade que dura</strong> — para a mulher que leva a atividade física a sério e quer se sentir poderosa de dentro pra fora.</div>
-  </div>
-
-  <div class="card" style="border-left:3px solid var(--gold);">
-    <div class="card-title">👩 Perfil real da cliente (formulário)</div>
-    <div class="card-text">
-      Mulheres de <strong>20 a 40 anos</strong>, praticam atividade física ou desejam adotar estilo saudável. Valorizam conforto, qualidade e peças que unem funcionalidade e beleza. Gostam de se sentir bem vestidas na academia, em caminhadas e na rotina. Renda média a alta. Compram online. Chegam pela <strong>indicação, Instagram e WhatsApp</strong>.
+  <div class="save-the-date">
+    <div class="std-calendar">
+      <div class="std-day-header">D</div><div class="std-day-header">S</div><div class="std-day-header">T</div><div class="std-day-header">Q</div><div class="std-day-header">Q</div><div class="std-day-header">S</div><div class="std-day-header">S</div>
+      <!-- Agosto 2026: começa na sexta (5) -->
+      <div class="std-day"></div><div class="std-day"></div><div class="std-day"></div><div class="std-day"></div><div class="std-day"></div>
+      <div class="std-day current-month">1</div><div class="std-day current-month">2</div>
+      <div class="std-day current-month">3</div><div class="std-day current-month">4</div><div class="std-day current-month">5</div><div class="std-day current-month">6</div><div class="std-day current-month">7</div>
+      <div class="std-day highlighted">8</div>
+      <div class="std-day current-month">9</div>
+      <div class="std-day current-month">10</div><div class="std-day current-month">11</div><div class="std-day current-month">12</div><div class="std-day current-month">13</div><div class="std-day current-month">14</div><div class="std-day current-month">15</div><div class="std-day current-month">16</div>
+    </div>
+    <div class="std-overlay">
+      <div class="std-save">Save the Date</div>
+      <div class="std-date-big">08</div>
+      <div class="std-month">Agosto · 2026</div>
+      <div class="std-line"></div>
+      <div class="std-script">uma nova experiência está chegando.</div>
+      <div class="std-script" style="font-size:14px;margin-top:4px;">Feita para vestir a sua essência com elegância.</div>
+      <div class="std-line"></div>
+      <div class="std-local">📍 Taguatinga · Distrito Federal</div>
+      <div class="std-coming">coming soon</div>
+      <div class="std-line"></div>
+      <div class="std-logo-small"><img src="data:image/jpeg;base64,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" alt="Cora·Li"/></div>
     </div>
   </div>
 
-  <div class="card" style="border-left:3px solid var(--mocha);">
-    <div class="card-title">🗣️ Tom de Voz</div>
-    <div class="card-text">
-      <strong>Elegante e acolhedor</strong> — como a própria cliente indicou. A Cora·Li fala com carinho e sofisticação. Não é fria como uma grande marca, mas tem classe. Inspira, conecta e converte.
+  <div class="card"><div class="card-title">📲 Como usar o Save the Date</div><div class="card-text">Postar no feed e nos stories a partir de <strong>30/07</strong>. Nos stories, usar a versão animada (contagem regressiva). No feed, postar como carrossel: slide 1 = save the date · slide 2 = endereço e horário · slide 3 = "te esperamos lá".</div></div>
+
+  <!-- PRESS KIT -->
+  <div class="eyebrow" style="margin-bottom:5px;margin-top:22px;">Press Kit</div>
+  <div class="sec-title" style="font-size:20px;">Kit para <strong>Influenciadoras</strong></div>
+  <div class="bar"></div>
+
+  <div class="presskit-hero">
+    <div class="pk-label">Inspiração estilo da imagem de referência</div>
+    <div class="pk-title">Kit Cora·Li Grand Opening</div>
+    <div class="pk-sub">Caixa com logo repetida na tampa, itens em tons rosê e nude, cartão manuscrito. Cada detalhe comunica o posicionamento da marca.</div>
+  </div>
+
+  <div class="caixa-visual">
+    <div class="caixa-header"><div class="caixa-header-title">O que vai dentro da caixa</div></div>
+    <div class="caixa-pattern">
+      <div class="caixa-item"><div class="ci-icon">📦</div><div class="ci-title">Caixa kraft premium</div><div class="ci-desc">Tampa com logo Cora·Li repetida. Papel de seda rosê por dentro. Laço nude.</div></div>
+      <div class="caixa-item"><div class="ci-icon">👗</div><div class="ci-title">Peça exclusiva</div><div class="ci-desc">Legging ou conjunto no tamanho dela. Tag personalizada com o nome.</div></div>
+      <div class="caixa-item"><div class="ci-icon">💌</div><div class="ci-title">Convite impresso</div><div class="ci-desc">Papel texturizado, tipografia elegante. Data, horário e endereço.</div></div>
+      <div class="caixa-item"><div class="ci-icon">🥂</div><div class="ci-title">Mini espumante rosé</div><div class="ci-desc">Reforça o tema coquetel e o posicionamento premium.</div></div>
+      <div class="caixa-item"><div class="ci-icon">📎</div><div class="ci-title">Cartão manuscrito</div><div class="ci-desc">"Para [nome], com carinho da Cora·Li 🌸" escrito à mão pela Nicolle.</div></div>
+      <div class="caixa-item"><div class="ci-icon">🔗</div><div class="ci-title">QR Code</div><div class="ci-desc">Abre o perfil do Instagram. "Marque a gente no dia!"</div></div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">🏷️ Palavras que definem a marca</div>
-    <div>
-      <span class="insight-chip">Elegante</span>
-      <span class="insight-chip">Acolhedora</span>
-      <span class="insight-chip">Funcional</span>
-      <span class="insight-chip">Confiante</span>
-      <span class="insight-chip">Feminina</span>
-      <span class="insight-chip">Ativa</span>
-      <span class="insight-chip">Premium acessível</span>
-      <span class="insight-chip">Autêntica</span>
+  <div class="card"><div class="card-title">📬 Quando e como enviar</div><div class="card-text">Enviar entre <strong>29/07 e 01/08</strong>. Avisar antes por DM criando expectativa: "Tenho um presentinho especial te esperando 🌸 Posso enviar seu endereço?" só manda após confirmação.</div></div>
+
+  <!-- INFLUENCIADORAS -->
+  <div class="eyebrow" style="margin-bottom:5px;margin-top:22px;">Influenciadoras</div>
+  <div class="sec-title" style="font-size:20px;">Quem <strong>convidar</strong></div>
+  <div class="bar"></div>
+  <div class="card"><div class="card-title">🎯 Perfil ideal</div><div class="card-text">Micro e médias influenciadoras do DF (1k a 50k seguidores), público feminino, fitness ou lifestyle. <strong>Engajamento acima de tudo</strong> 5k com 8% vale mais que 50k com 1%.</div></div>
+  <div class="inf-card"><div class="inf-av">🏋️</div><div class="inf-info"><div class="inf-nome">Personal trainer / instrutora</div><div class="inf-handle">Buscar: "personal trainer Brasília" · "academia Taguatinga"</div><div class="inf-desc">Público altamente qualificado que já pratica exercício e busca roupa fitness.</div><div class="inf-tag">Prioridade alta</div></div></div>
+  <div class="inf-card"><div class="inf-av">🌿</div><div class="inf-info"><div class="inf-nome">Lifestyle / autocuidado DF</div><div class="inf-handle">Buscar: "lifestyle Brasília" · "autocuidado DF" · "vida saudável Brasília"</div><div class="inf-desc">Público feminino que valoriza estética e bem-estar perfil exato da cliente Cora·Li.</div><div class="inf-tag">Prioridade alta</div></div></div>
+  <div class="inf-card"><div class="inf-av">👗</div><div class="inf-info"><div class="inf-nome">Moda / fashion DF</div><div class="inf-handle">Buscar: "moda Brasília" · "fashion DF" · "looks Taguatinga"</div><div class="inf-desc">Amplia o alcance para mulheres que amam moda e podem se tornar clientes pela estética.</div><div class="inf-tag">Prioridade média</div></div></div>
+
+  <div class="card" style="margin-top:4px;"><div class="card-title">✉️ DM sugerida para abordagem</div><div class="card-text" style="font-style:italic;">"Oi [nome]! Sou a Nicolle, da Cora·Li Fit. Estamos abrindo nossa primeira loja em Taguatinga no dia 08/08 e adoraríamos ter você como convidada especial do nosso coquetel de inauguração. Tenho um presentinho especial pra te enviar 🌸 Posso te pedir o endereço?"</div></div>
+
+  <!-- ROTEIRO -->
+  <div class="eyebrow" style="margin-bottom:5px;margin-top:22px;">Roteiro do Evento</div>
+  <div class="sec-title" style="font-size:20px;">Como vai ser o <strong>dia 08/08</strong></div>
+  <div class="bar"></div>
+
+  <div class="inaug-hero">
+    <div class="inaug-data">08.08</div>
+    <div class="inaug-mes">Agosto de 2026 · Taguatinga</div>
+    <div class="inaug-titulo">Grand Opening<br><em>Cora·Li Fit</em></div>
+    <div class="inaug-local">📍 Taguatinga · Distrito Federal</div>
+  </div>
+
+  <div class="tl">
+    <div class="tl-item"><div class="tl-dot g">1</div><div><div class="tl-hora">17h00</div><div class="tl-titulo">Abertura das portas</div><div class="tl-desc">Recepção com música ambiente, drinks de boas-vindas (espumante rosé + água aromatizada), espaço decorado instagramável.</div></div></div>
+    <div class="tl-item"><div class="tl-dot r">2</div><div><div class="tl-hora">17h30</div><div class="tl-titulo">Chegada das influenciadoras</div><div class="tl-desc">Recepção diferenciada, entrega do kit exclusivo, foto no espaço de entrada da loja.</div></div></div>
+    <div class="tl-item"><div class="tl-dot g">3</div><div><div class="tl-hora">18h00</div><div class="tl-titulo">Abertura oficial</div><div class="tl-desc">Fala da Nicolle, corte de fita ou descerramento do banner. Filmar tudo para conteúdo esse é o momento mais emocionante.</div></div></div>
+    <div class="tl-item"><div class="tl-dot r">4</div><div><div class="tl-hora">18h15</div><div class="tl-titulo">Provador ao vivo</div><div class="tl-desc">Convidadas experimentam as peças, tiram fotos. Cria conteúdo orgânico espontâneo. Incentivar marcação @coralifit.</div></div></div>
+    <div class="tl-item"><div class="tl-dot g">5</div><div><div class="tl-hora">18h30 – 20h</div><div class="tl-titulo">Coquetel livre + vendas</div><div class="tl-desc">Finger food leve, música, ambiente acolhedor. Equipe de atendimento disponível. Momento de venda direta.</div></div></div>
+    <div class="tl-item"><div class="tl-dot r">6</div><div><div class="tl-hora">20h00</div><div class="tl-titulo">Encerramento + sorteio</div><div class="tl-desc">Sorteio de kit Cora·Li entre quem marcou o perfil nos stories. Foto coletiva. Agradecimento da Nicolle.</div></div></div>
+  </div>
+
+  <!-- CAMPANHA DIGITAL -->
+  <div class="eyebrow" style="margin-bottom:5px;margin-top:22px;">Campanha Digital</div>
+  <div class="sec-title" style="font-size:20px;">Conteúdo em <strong>3 Fases</strong></div>
+  <div class="bar"></div>
+
+  <div class="fase">
+    <div class="fase-header" style="background:var(--dark);"><div class="fase-num" style="background:var(--rose);">1</div><div><div class="fase-titulo">Pré-inauguração</div><div class="fase-periodo">30/07 a 07/08</div></div></div>
+    <div class="fase-body">
+      <div class="fi"><strong>Save the Date</strong> no feed (30/07) calendário com dia 08 circulado, tom do @amordepeca adaptado</div>
+      <div class="fi"><strong>Stories diários com contagem regressiva</strong> a partir de 01/08</div>
+      <div class="fi"><strong>Bastidores da montagem</strong> caixas chegando, arara sendo montada, decoração</div>
+      <div class="fi"><strong>Reel de transformação</strong> espaço vazio até loja pronta, revela endereço no final</div>
+      <div class="fi"><strong>DM para influenciadoras</strong> convidadas entre 29/07 e 01/08</div>
     </div>
   </div>
 
-  <div style="margin-top:20px; margin-bottom:10px;">
-    <div class="eyebrow">Pilares de Comunicação</div>
-    <div class="sec-title" style="font-size:22px;">O que a marca <strong>comunica</strong></div>
-    <div class="bar"></div>
+  <div class="fase">
+    <div class="fase-header" style="background:linear-gradient(135deg,#2c1f1a,#4a2a1a);"><div class="fase-num" style="background:var(--gold);color:var(--dark);">2</div><div><div class="fase-titulo">Dia da Inauguração</div><div class="fase-periodo">08/08 o dia mais importante</div></div></div>
+    <div class="fase-body">
+      <div class="fi"><strong>Stories ao vivo</strong> do coquetel chegada, drinks, influenciadoras, looks</div>
+      <div class="fi"><strong>Reel rápido do evento</strong> para publicar ainda no dia à noite</div>
+      <div class="fi"><strong>Repost imediato</strong> de tudo que as influenciadoras postarem</div>
+      <div class="fi"><strong>Live curta</strong> mostrando a loja para quem não pôde ir</div>
+      <div class="fi"><strong>Sorteio nos stories</strong> kit para quem marcar e compartilhar</div>
+    </div>
   </div>
 
-  <div class="pilar"><div class="pilar-num">01</div><div class="pilar-title">Estilo de Vida Ativo</div><div class="pilar-text">Mostrar as peças em contexto real — academia, caminhada, rotina do dia a dia. A cliente precisa se ver usando.</div></div>
-  <div class="pilar"><div class="pilar-num">02</div><div class="pilar-title">Qualidade & Caimento</div><div class="pilar-text">Destacar tecido, acabamento e como a peça cai no corpo. Gera confiança para comprar online sem provar.</div></div>
-  <div class="pilar"><div class="pilar-num">03</div><div class="pilar-title">Empoderamento Feminino</div><div class="pilar-text">Celebrar a mulher que cuida de si. Conteúdo motivacional autêntico — sem ser clichê.</div></div>
-  <div class="pilar"><div class="pilar-num">04</div><div class="pilar-title">Novidades às Quartas</div><div class="pilar-text">Ritual semanal já definido pela marca. Cria expectativa, engajamento e hábito de acompanhar o perfil.</div></div>
-  <div class="pilar"><div class="pilar-num">05</div><div class="pilar-title">Conversão para o WhatsApp</div><div class="pilar-text">Todo conteúdo direciona para o fechamento. Bio, stories e tráfego pago trabalham juntos para levar a cliente até o WhatsApp.</div></div>
-
-  <div class="hl" style="margin-top:20px;">
-    <div class="hl-label">Frase de Posicionamento</div>
-    <div class="hl-text"><strong>"Para a mulher que não para — e não precisa escolher entre performance e elegância."</strong></div>
+  <div class="fase">
+    <div class="fase-header" style="background:var(--mocha);"><div class="fase-num" style="background:var(--rose);">3</div><div><div class="fase-titulo">Pós-inauguração</div><div class="fase-periodo">09/08 em diante</div></div></div>
+    <div class="fase-body">
+      <div class="fi"><strong>Reel profissional completo</strong> do evento com edição e música</div>
+      <div class="fi"><strong>Carrossel "como foi"</strong> fotos do evento e depoimentos</div>
+      <div class="fi"><strong>Repost dos conteúdos</strong> das influenciadoras com agradecimento</div>
+      <div class="fi"><strong>Anúncio do horário</strong> de funcionamento da loja</div>
+      <div class="fi"><strong>Tráfego pago</strong> segmentado para Taguatinga e DF com fotos do evento</div>
+    </div>
   </div>
 
-  <div class="card">
-    <div class="card-title">🎯 Meta clara: 60 vendas/mês</div>
-    <div class="card-text">
-      Hoje: 10 a 30 vendas. Meta: 60 vendas (2 por dia). Isso representa <strong>2x a 6x o volume atual</strong>. A combinação de conteúdo orgânico consistente + tráfego pago + WhatsApp bem trabalhado é o caminho direto para chegar lá.
+  <div class="hashtags">
+    <div class="ht-label">Hashtags da inauguração</div>
+    <div class="ht-list">
+      <div class="ht">#CoraLiFit</div>
+      <div class="ht">#GrandOpening</div>
+      <div class="ht">#LojaCoraLi</div>
+      <div class="ht">#ModaFitnessBrasilia</div>
+      <div class="ht">#FitnessTaguatinga</div>
+      <div class="ht">#InauguracaoCoraLi</div>
+      <div class="ht">#AthleisureDF</div>
+      <div class="ht">#CoraLiGrandOpening</div>
     </div>
   </div>
 </div>
 
-<!-- CALENDÁRIO -->
+<!-- ══ CALENDÁRIO ══ -->
 <div class="section" id="calendario">
-  <div class="eyebrow">04 — Calendário de Conteúdo</div>
-  <div class="sec-title">Planejamento <strong>Mensal</strong></div>
+  <div class="eyebrow">05 Calendário de Conteúdo</div>
+  <div class="sec-title">De Hoje até <strong>Agosto</strong></div>
   <div class="bar"></div>
 
   <div class="legenda">
-    <div class="leg-item"><div class="leg-dot" style="background:rgba(232,196,184,0.7);"></div>Reel</div>
-    <div class="leg-item"><div class="leg-dot" style="background:rgba(201,168,124,0.6);"></div>Feed</div>
-    <div class="leg-item"><div class="leg-dot" style="background:rgba(107,74,62,0.2);"></div>Stories</div>
+    <div class="leg-item"><div class="leg-dot" style="background:rgba(232,196,184,.7);"></div>Reel</div>
+    <div class="leg-item"><div class="leg-dot" style="background:rgba(201,168,124,.6);"></div>Feed</div>
+    <div class="leg-item"><div class="leg-dot" style="background:rgba(107,74,62,.2);"></div>Stories</div>
+    <div class="leg-item"><div class="leg-dot" style="background:rgba(201,168,124,.4);"></div>Inauguração</div>
   </div>
 
-  <div class="card" style="margin-bottom:18px;">
-    <div class="card-title">📋 Volume mensal — Plano Completo</div>
-    <div class="card-text">
-      <strong>4 Reels</strong> (captação + edição + publicação) · <strong>3 posts por semana no feed</strong> (fotos e carrosséis + legendas) · <strong>Stories estratégicos</strong> · <strong>Relatório mensal</strong> de resultados · <strong>Lançamentos toda quarta-feira</strong>
-    </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-title">📋 Volume mensal</div>
+    <div class="card-text"><strong>4 Reels</strong> (captação + edição + publicação) · <strong>3 posts por semana no feed</strong> · <strong>Stories diários</strong> · Lançamentos toda quarta</div>
   </div>
 
-  <!-- MÊS 1 — AGOSTO -->
+  <!-- JULHO (a partir de hoje) -->
   <div class="mes-header">
-    <div class="mes-nome">Agosto — Fundação</div>
-    <div class="mes-tag">Posicionamento + Volta à rotina</div>
+    <div class="mes-nome">Julho A partir de hoje</div>
+    <div class="mes-tag">23 a 31/07 · Aquecimento</div>
   </div>
   <div class="mes-body">
     <div class="semana">
-      <div class="semana-label">Semana 1 · Setup & Apresentação</div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Carrossel · Segunda</div>
-          <div class="post-tema">Quem é a Cora·Li Fit?</div>
-          <div class="post-desc">Apresentação da marca, valores e o que nos diferencia. Primeiro impacto na nova fase.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info">
-          <div class="post-formato">Reel 01 · Quarta (lançamento)</div>
-          <div class="post-tema">Da academia ao café — sem trocar de roupa</div>
-          <div class="post-desc">Transições mostrando versatilidade das peças. Alta chance de viralizar no nicho fitness.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Foto · Sexta</div>
-          <div class="post-tema">Look da semana — peça destaque</div>
-          <div class="post-desc">Editorial limpo. Estética próxima à @amordepeca adaptada ao fitness.</div>
-        </div>
-      </div>
+      <div class="semana-label">23/07 Quarta</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">A loja está chegando mas quando?</div><div class="post-desc">Mostra mais detalhes da loja que já foi anunciada. Mantém a curiosidade sobre a data.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 2 · Produto em foco</div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Foto · Segunda</div>
-          <div class="post-tema">Detalhes que fazem a diferença</div>
-          <div class="post-desc">Close no tecido, acabamento, costura. Gera confiança para compra online.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Carrossel · Quarta (lançamento)</div>
-          <div class="post-tema">Novidade da semana + 3 formas de usar</div>
-          <div class="post-desc">Apresenta a nova peça e já mostra versatilidade. CTA direto para WhatsApp.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info">
-          <div class="post-formato">Reel 02 · Sexta</div>
-          <div class="post-tema">Get ready with me — look de treino</div>
-          <div class="post-desc">Formato altíssimo engajamento. Mostra a peça sendo vestida + resultado final.</div>
-        </div>
-      </div>
+      <div class="semana-label">24/07 Quinta</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Produto do dia com arrasta para WhatsApp</div><div class="post-desc">Peça mais pedida com CTA direto.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 3 · Volta à rotina (fim das férias)</div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Carrossel · Segunda</div>
-          <div class="post-tema">Hora de voltar — seu kit de treino para o segundo semestre</div>
-          <div class="post-desc">Aproveita o contexto das férias acabando. Alto potencial de conversão.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Foto · Quarta (lançamento)</div>
-          <div class="post-tema">Nova chegada da semana</div>
-          <div class="post-desc">Ritual de quarta — peça nova com urgência e link para WhatsApp.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info">
-          <div class="post-formato">Reel 03 · Sexta</div>
-          <div class="post-tema">Rotina fitness de volta — acorda, treina, vive</div>
-          <div class="post-desc">Lifestyle completo com as peças. Aproveita o tema "volta à rotina" das férias escolares.</div>
-        </div>
-      </div>
+      <div class="semana-label">25/07 Sexta</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Enquete: qual look você escolheria?</div><div class="post-desc">Duas peças em disputa. Engajamento + dados de preferência.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 4 · Conversão & Prova social</div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Foto · Segunda</div>
-          <div class="post-tema">Cliente usando — repost autorizado</div>
-          <div class="post-desc">UGC — conteúdo da cliente real. Prova social máxima para quem ainda não comprou.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info">
-          <div class="post-formato">Feed — Carrossel · Quarta (lançamento)</div>
-          <div class="post-tema">As mais pedidas de agosto</div>
-          <div class="post-desc">Recap das peças mais comentadas. Prova social + nova chamada para WhatsApp.</div>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info">
-          <div class="post-formato">Reel 04 · Sexta</div>
-          <div class="post-tema">Por dentro da Cora·Li — bastidores</div>
-          <div class="post-desc">Humaniza a marca. Mostra cuidado e processo. Cria conexão emocional com a audiência.</div>
-        </div>
-      </div>
+      <div class="semana-label">26/07 Sábado</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Bastidores do fim de semana</div><div class="post-desc">Preparação de pedidos, novidade chegando. Humaniza a marca.</div></div></div>
+    </div>
+    <div class="semana">
+      <div class="semana-label">28/07 Segunda</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Motivação da semana + look do dia</div><div class="post-desc">Frase motivacional fitness + foto de uma peça.</div></div></div>
+    </div>
+    <div class="semana">
+      <div class="semana-label">29/07 Terça</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Depoimento de cliente</div><div class="post-desc">Print ou repost de cliente satisfeita. Prova social.</div></div></div>
+    </div>
+    <div class="semana">
+      <div class="semana-label">30/07 Quarta 🌟</div>
+      <div class="post-item highlight-post" style="background:rgba(201,168,124,.1);border-radius:8px;padding:8px;"><div class="post-icon pi-e">✨</div><div class="post-info"><div class="post-formato">Feed Save the Date</div><div class="post-tema">SAVE THE DATE 08/08 🗓</div><div class="post-desc">Carrossel: slide 1 = save the date estilo calendário · slide 2 = endereço + horário · slide 3 = "te esperamos lá". Publicar também nos stories com contagem.</div></div></div>
+    </div>
+    <div class="semana">
+      <div class="semana-label">31/07 Quinta</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories</div><div class="post-tema">Produto mais pedido da semana + teaser da loja</div><div class="post-desc">Une venda com expectativa da inauguração.</div></div></div>
     </div>
   </div>
 
-  <!-- MÊS 2 — SETEMBRO -->
+  <!-- AGOSTO -->
   <div class="mes-header">
-    <div class="mes-nome">Setembro — Crescimento</div>
-    <div class="mes-tag">Autoridade + Engajamento</div>
+    <div class="mes-nome">Agosto Grand Opening</div>
+    <div class="mes-tag">Inauguração 08/08</div>
   </div>
   <div class="mes-body">
     <div class="semana">
-      <div class="semana-label">Semana 1 · Educação</div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info"><div class="post-formato">Reel 01 · Segunda</div><div class="post-tema">Como escolher a legging certa para cada treino</div><div class="post-desc">Conteúdo educativo com as peças. Alta chance de viralizar e gerar salvamentos.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info"><div class="post-formato">Feed — Carrossel · Quarta (lançamento)</div><div class="post-tema">Novidade da semana + dica de styling</div><div class="post-desc">Ritual de quarta com nova peça + como usar. Cria expectativa semanal.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info"><div class="post-formato">Feed — Foto · Sexta</div><div class="post-tema">Look editorial — paleta de cores da temporada</div><div class="post-desc">Foto premium mostrando a coesão e identidade da coleção.</div></div>
-      </div>
+      <div class="semana-label">Semana 1 · 01–07/08 Contagem regressiva 🔥</div>
+      <div class="post-item"><div class="post-icon pi-e">📲</div><div class="post-info"><div class="post-formato">Stories · Todo dia 01 a 07/08</div><div class="post-tema">Contagem regressiva "faltam X dias para a inauguração!"</div><div class="post-desc">Cada dia um bastidor diferente: decoração, araras, produtos chegando. A audiência já sabe da loja agora quer saber quando abre.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">🖼️</div><div class="post-info"><div class="post-formato">Feed Carrossel · Segunda 04/08</div><div class="post-tema">Bastidores da montagem da loja</div><div class="post-desc">Fotos do espaço sendo preparado. Gera curiosidade e antecipação.</div></div></div>
+      <div class="post-item highlight-post" style="background:rgba(201,168,124,.1);border-radius:8px;padding:8px;"><div class="post-icon pi-e">🎬</div><div class="post-info"><div class="post-formato">Reel 01 · Quarta 06/08</div><div class="post-tema">A transformação do espaço vazio à loja Cora·Li</div><div class="post-desc">Timelapse da loja sendo montada. Revela o endereço no final. Alto potencial viral.</div></div></div>
+      <div class="post-item highlight-post" style="background:rgba(201,168,124,.1);border-radius:8px;padding:8px;"><div class="post-icon pi-e">📸</div><div class="post-info"><div class="post-formato">Feed Foto · Sexta 08/08 DIA DA INAUGURAÇÃO</div><div class="post-tema">Hoje abrimos as portas! Bem-vindas à Cora·Li Fit 🥂</div><div class="post-desc">Foto editorial da loja pronta. Endereço, horário e convite aberto.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 2 · Prova Social</div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info"><div class="post-formato">Feed — Carrossel · Segunda</div><div class="post-tema">O que nossas clientes dizem</div><div class="post-desc">Depoimentos reais + foto das peças. Gera confiança para novas compradoras.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info"><div class="post-formato">Feed — Foto · Quarta (lançamento)</div><div class="post-tema">Nova peça da semana</div><div class="post-desc">Ritual de quarta. Peça nova com urgência.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info"><div class="post-formato">Reel 02 · Sexta</div><div class="post-tema">Antes e depois — do treino ao happy hour</div><div class="post-desc">Transição da roupa da academia para o look casual. Alta identificação.</div></div>
-      </div>
+      <div class="semana-label">Semana 2 · 11–15/08 Pós-inauguração</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories · Diário</div><div class="post-tema">Reposts das influenciadoras + depoimentos do evento</div><div class="post-desc">Mantém engajamento alto na semana seguinte à inauguração.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-r">🎬</div><div class="post-info"><div class="post-formato">Reel 02 · Segunda 11/08</div><div class="post-tema">Como foi a inauguração highlights do coquetel</div><div class="post-desc">Edição completa do evento com música. O reel mais importante do mês.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">🖼️</div><div class="post-info"><div class="post-formato">Feed Carrossel · Quarta 13/08</div><div class="post-tema">Novidade da semana + a loja está aberta!</div><div class="post-desc">Ritual de quarta retoma com nova peça. Reforça horário da loja.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">📸</div><div class="post-info"><div class="post-formato">Feed Foto · Sexta 15/08</div><div class="post-tema">Look da semana editorial na loja</div><div class="post-desc">Usa o novo espaço como cenário. Premium e instagramável.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 3 · Desejo</div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info"><div class="post-formato">Feed — Foto · Segunda</div><div class="post-tema">Flat lay: conjunto completo</div><div class="post-desc">Foto produto elegante. Ideal para salvar e compartilhar.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info"><div class="post-formato">Reel 03 · Quarta (lançamento)</div><div class="post-tema">Unboxing — chegou coisa boa na Cora·Li</div><div class="post-desc">Experiência de receber e experimentar. Humaniza e gera desejo antecipado.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info"><div class="post-formato">Feed — Carrossel · Sexta</div><div class="post-tema">5 motivos para treinar com estilo</div><div class="post-desc">Motivacional + produto. Gera engajamento e salvamentos.</div></div>
-      </div>
+      <div class="semana-label">Semana 3 · 18–22/08 Volta à rotina</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories · Diário</div><div class="post-tema">Rotina de volta + produto do dia</div><div class="post-desc">Segunda: motivação. Quarta: lançamento. Quinta: enquete. Sexta: bastidor da loja.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">🖼️</div><div class="post-info"><div class="post-formato">Feed Carrossel · Segunda 18/08</div><div class="post-tema">Férias acabaram seu kit de treino para o segundo semestre</div><div class="post-desc">Alta conversão para quem quer retomar os treinos.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">📸</div><div class="post-info"><div class="post-formato">Feed Foto · Quarta 20/08</div><div class="post-tema">Novidade da semana</div><div class="post-desc">Ritual de quarta. Peça nova + CTA para WhatsApp ou loja.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-r">🎬</div><div class="post-info"><div class="post-formato">Reel 03 · Sexta 22/08</div><div class="post-tema">Rotina fitness: acorda, treina, vai à loja</div><div class="post-desc">Mostra a loja como parte da rotina. Apresenta o espaço de forma natural.</div></div></div>
     </div>
     <div class="semana">
-      <div class="semana-label">Semana 4 · Fechamento do mês</div>
-      <div class="post-item">
-        <div class="post-icon f">🖼️</div>
-        <div class="post-info"><div class="post-formato">Feed — Carrossel · Segunda</div><div class="post-tema">Montando seu kit de treino perfeito</div><div class="post-desc">Sugere combinações de peças. Aumenta ticket médio e tempo de compra.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon f">📸</div>
-        <div class="post-info"><div class="post-formato">Feed — Foto · Quarta (lançamento)</div><div class="post-tema">Última novidade do mês</div><div class="post-desc">Cria senso de urgência antes do fechamento mensal.</div></div>
-      </div>
-      <div class="post-item">
-        <div class="post-icon r">🎬</div>
-        <div class="post-info"><div class="post-formato">Reel 04 · Sexta</div><div class="post-tema">Um mês de Cora·Li — o que rolou</div><div class="post-desc">Recap do mês. Mostra evolução, engaja comunidade, antecipa o próximo mês.</div></div>
-      </div>
+      <div class="semana-label">Semana 4 · 25–29/08 Conversão</div>
+      <div class="post-item"><div class="post-icon pi-s">📲</div><div class="post-info"><div class="post-formato">Stories · Diário</div><div class="post-tema">Fechamento do mês + prova social</div><div class="post-desc">Depoimentos, peças mais pedidas, CTA para loja e WhatsApp.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">📸</div><div class="post-info"><div class="post-formato">Feed Foto · Segunda 25/08</div><div class="post-tema">Cliente na loja experiência real</div><div class="post-desc">Foto de cliente (com autorização). Prova social + espaço em uso.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-f">🖼️</div><div class="post-info"><div class="post-formato">Feed Carrossel · Quarta 27/08</div><div class="post-tema">As mais pedidas de agosto</div><div class="post-desc">Recap das peças. Prova social + CTA.</div></div></div>
+      <div class="post-item"><div class="post-icon pi-r">🎬</div><div class="post-info"><div class="post-formato">Reel 04 · Sexta 29/08</div><div class="post-tema">Um mês de Cora·Li na loja física</div><div class="post-desc">Recap de agosto. Mostra evolução e cria expectativa para setembro.</div></div></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="card-title">📱 Stories — Estratégia Semanal</div>
+    <div class="card-title">📱 Stories Estratégia Agosto</div>
     <div class="card-text">
-      <strong>Segunda:</strong> Motivação da semana + look do dia<br>
-      <strong>Quarta:</strong> Lançamento da novidade + arrasta pra WhatsApp<br>
-      <strong>Quinta:</strong> Enquete / interação ("qual você escolheria?")<br>
-      <strong>Sexta:</strong> Bastidores ou novidade da semana<br>
+      <strong>01–07/08:</strong> Contagem regressiva diária para a inauguração<br>
+      <strong>08/08:</strong> Stories ao vivo do evento o dia todo<br>
+      <strong>Segunda:</strong> Motivação + look do dia<br>
+      <strong>Quarta:</strong> Lançamento da novidade + arrasta para WhatsApp<br>
+      <strong>Quinta:</strong> Enquete ou interação<br>
+      <strong>Sexta:</strong> Bastidores da loja<br>
       <strong>Sábado:</strong> Repost de cliente ou depoimento
     </div>
   </div>
+</div>
 
-
-
-<footer><p>Cora·Li Fit · Posicionamento Estratégico & Calendário · Ecossistema Gestão · 2026</p></footer>
+<footer><p>Cora·Li Fit · Posicionamento & Grand Opening · Ecossistema Gestão · 2026</p></footer>
 
 <script>
-function show(id, el) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
-  window.scrollTo({top: document.querySelector('.nav').offsetTop - 10, behavior:'smooth'});
+  window.scrollTo({top:document.querySelector('.nav').offsetTop-10,behavior:'smooth'});
 }
 </script>
 </body>
